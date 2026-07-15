@@ -3,247 +3,427 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Karting Tools</title>
+<title>Ristorante Prua — Ristorante di Pesce sul Porto di Rimini</title>
+<meta name="description" content="Ristorante Prua, cucina di mare elegante sulla Darsena di Rimini. Pesce freschissimo dal mercato ittico, terrazza sul porto. Viale Ortigara 45/d.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=IBM+Plex+Mono:wght@400;700&display=swap');
-
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-  :root {
-    --bg:      #08080a;
-    --card:    #111114;
-    --border:  #222228;
-    --border2: #38383f;
-    --text:    #f0f0f0;
-    --muted:   #555560;
-    --amber:   #f59e0b;
-    --amber2:  #fbbf24;
+  :root{
+    --navy:#0b1d2a;
+    --navy-2:#122a3b;
+    --gold:#c9a86a;
+    --gold-light:#e2cda0;
+    --cream:#f6f1e7;
+    --ink:#1a2733;
+    --muted:#7d8a94;
   }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{font-family:'Montserrat',sans-serif;color:var(--ink);background:var(--cream);line-height:1.7;font-weight:300}
+  h1,h2,h3,.serif{font-family:'Cormorant Garamond',serif;font-weight:500}
+  img{display:block;width:100%;height:100%;object-fit:cover}
 
-  html, body {
-    height: 100%;
-    background: var(--bg);
-    color: var(--text);
-    font-family: 'IBM Plex Mono', monospace;
-    overflow: hidden;
-  }
+  /* ---------- NAV ---------- */
+  nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content:space-between;align-items:center;
+      padding:1.4rem 5vw;transition:.4s;color:#fff}
+  nav.scrolled{background:rgba(11,29,42,.96);backdrop-filter:blur(8px);padding:.9rem 5vw;box-shadow:0 2px 24px rgba(0,0,0,.25)}
+  .logo{font-family:'Cormorant Garamond',serif;font-size:1.6rem;letter-spacing:.35em;text-transform:uppercase;color:#fff;text-decoration:none}
+  .logo span{color:var(--gold)}
+  .nav-links{display:flex;gap:2.2rem;list-style:none;align-items:center}
+  .nav-links a{color:#fff;text-decoration:none;font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;opacity:.85;transition:.3s}
+  .nav-links a:hover{opacity:1;color:var(--gold-light)}
+  .btn{display:inline-block;border:1px solid var(--gold);color:var(--gold-light)!important;padding:.55em 1.6em;opacity:1!important;transition:.3s}
+  .btn:hover{background:var(--gold);color:var(--navy)!important}
+  .hamburger{display:none;background:none;border:none;color:#fff;font-size:1.6rem;cursor:pointer}
 
-  /* ── NOISE TEXTURE OVERLAY ── */
-  body::before {
-    content: '';
-    position: fixed;
-    inset: 0;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
-    background-size: 200px 200px;
-    pointer-events: none;
-    z-index: 0;
-  }
+  /* ---------- HERO ---------- */
+  header{position:relative;height:100svh;min-height:600px;display:flex;align-items:center;justify-content:center;text-align:center;color:#fff;overflow:hidden}
+  .hero-bg{position:absolute;inset:0;background:
+      linear-gradient(rgba(11,29,42,.45),rgba(11,29,42,.72)),
+      url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=2000&auto=format&fit=crop') center/cover no-repeat var(--navy);
+      transform:scale(1.05)}
+  .hero-content{position:relative;z-index:2;padding:0 6vw;animation:fadeUp 1.4s ease both .3s}
+  .kicker{font-size:.7rem;letter-spacing:.5em;text-transform:uppercase;color:var(--gold-light);margin-bottom:1.4rem}
+  h1{font-size:clamp(3rem,9vw,6.5rem);line-height:1.05;letter-spacing:.08em;font-weight:500}
+  .hero-sub{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(1.1rem,2.4vw,1.5rem);margin-top:1.2rem;opacity:.9}
+  .hero-cta{margin-top:2.6rem;display:flex;gap:1.2rem;justify-content:center;flex-wrap:wrap}
+  .hero-cta a{text-decoration:none;font-size:.72rem;letter-spacing:.25em;text-transform:uppercase;padding:.9em 2.4em}
+  .cta-solid{background:var(--gold);color:var(--navy);border:1px solid var(--gold);transition:.3s}
+  .cta-solid:hover{background:transparent;color:var(--gold-light)}
+  .cta-ghost{border:1px solid rgba(255,255,255,.5);color:#fff;transition:.3s}
+  .cta-ghost:hover{border-color:var(--gold);color:var(--gold-light)}
+  .scroll-hint{position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);color:rgba(255,255,255,.6);font-size:.65rem;letter-spacing:.3em;text-transform:uppercase;z-index:2;animation:bob 2.4s infinite ease-in-out}
+  @keyframes bob{0%,100%{transform:translate(-50%,0)}50%{transform:translate(-50%,8px)}}
+  @keyframes fadeUp{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:none}}
 
-  /* ── GRID LINES ── */
-  body::after {
-    content: '';
-    position: fixed;
-    inset: 0;
-    background-image:
-      linear-gradient(rgba(245,158,11,.03) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(245,158,11,.03) 1px, transparent 1px);
-    background-size: 48px 48px;
-    pointer-events: none;
-    z-index: 0;
-  }
+  /* ---------- SECTIONS ---------- */
+  section{padding:6.5rem 6vw}
+  .section-label{font-size:.68rem;letter-spacing:.45em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem}
+  .section-title{font-size:clamp(2rem,4.5vw,3.2rem);line-height:1.15;margin-bottom:1.6rem}
+  .rule{width:56px;height:1px;background:var(--gold);margin:1.6rem 0}
 
-  .page {
-    position: relative;
-    z-index: 1;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 24px;
-    gap: 0;
-  }
+  /* intro */
+  .intro{display:grid;grid-template-columns:1.1fr .9fr;gap:5rem;align-items:center;max-width:1200px;margin:0 auto}
+  .intro p{margin-bottom:1.1rem;color:#3d4b57}
+  .intro .drop::first-letter{font-family:'Cormorant Garamond',serif;font-size:3.4em;float:left;line-height:.85;padding-right:.12em;color:var(--gold)}
+  .intro-img{position:relative;aspect-ratio:4/5}
+  .intro-img::after{content:"";position:absolute;inset:-18px 18px 18px -18px;border:1px solid var(--gold);z-index:-1}
 
-  /* ── LOGO ── */
-  .logo {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: clamp(52px, 10vw, 96px);
-    letter-spacing: 6px;
-    color: var(--text);
-    line-height: 1;
-    margin-bottom: 6px;
-    animation: fadeDown .6s ease both;
-  }
-  .logo span { color: var(--amber); }
+  /* gallery */
+  .gallery{background:var(--navy);color:#fff}
+  .gallery .section-title{color:#fff}
+  .gallery-head{max-width:1200px;margin:0 auto 3rem}
+  .grid{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:220px;gap:14px;max-width:1200px;margin:0 auto}
+  .grid figure{overflow:hidden;position:relative}
+  .grid figure:nth-child(1){grid-column:span 2;grid-row:span 2}
+  .grid figure:nth-child(4){grid-row:span 2}
+  .grid img{transition:transform .8s ease;filter:saturate(.92)}
+  .grid figure:hover img{transform:scale(1.06)}
+  .grid figcaption{position:absolute;left:0;right:0;bottom:0;padding:2.2rem 1.2rem .9rem;font-size:.68rem;letter-spacing:.25em;text-transform:uppercase;
+      background:linear-gradient(transparent,rgba(11,29,42,.85));opacity:0;transition:.4s}
+  .grid figure:hover figcaption{opacity:1}
 
-  .tagline {
-    font-size: 10px;
-    font-weight: 700;
-    letter-spacing: 4px;
-    text-transform: uppercase;
-    color: var(--muted);
-    margin-bottom: 56px;
-    animation: fadeDown .6s .1s ease both;
-  }
+  /* menu section */
+  .menu-invite{text-align:center;max-width:720px;margin:0 auto}
+  .menu-invite .section-label{margin-bottom:1rem}
+  .menu-invite p{color:#3d4b57;margin-bottom:2.4rem}
+  .open-menu-btn{font-family:'Montserrat',sans-serif;background:var(--navy);color:var(--gold-light);border:1px solid var(--navy);
+      font-size:.74rem;letter-spacing:.28em;text-transform:uppercase;padding:1.1em 3em;cursor:pointer;transition:.3s}
+  .open-menu-btn:hover{background:transparent;color:var(--navy);border-color:var(--gold)}
 
-  /* ── CARDS ── */
-  .cards {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 16px;
-    width: 100%;
-    max-width: 560px;
-    animation: fadeUp .6s .2s ease both;
-  }
+  /* ---------- MENU MODAL ---------- */
+  .modal{position:fixed;inset:0;z-index:200;display:none;align-items:center;justify-content:center;padding:4vh 4vw}
+  .modal.open{display:flex}
+  .modal-backdrop{position:absolute;inset:0;background:rgba(11,29,42,.82);backdrop-filter:blur(6px)}
+  .modal-card{position:relative;background:var(--cream);max-width:760px;width:100%;max-height:92vh;overflow-y:auto;
+      padding:4rem 3.4rem;box-shadow:0 30px 80px rgba(0,0,0,.5);animation:fadeUp .5s ease both}
+  .modal-card::-webkit-scrollbar{width:6px}
+  .modal-card::-webkit-scrollbar-thumb{background:var(--gold);border-radius:3px}
+  .modal-close{position:sticky;top:0;float:right;margin:-2.6rem -2rem 0 0;background:none;border:none;font-size:1.8rem;color:var(--muted);cursor:pointer;transition:.3s;line-height:1}
+  .modal-close:hover{color:var(--navy)}
+  .menu-header{text-align:center;margin-bottom:3rem}
+  .menu-header h2{font-size:2.6rem;letter-spacing:.12em}
+  .menu-header p{font-family:'Cormorant Garamond',serif;font-style:italic;color:var(--muted)}
+  .menu-cat{margin-bottom:2.6rem}
+  .menu-cat h3{font-size:1.15rem;letter-spacing:.35em;text-transform:uppercase;color:var(--gold);text-align:center;margin-bottom:1.6rem;font-family:'Montserrat',sans-serif;font-weight:400;font-size:.78rem}
+  .dish{display:flex;justify-content:space-between;align-items:baseline;gap:1rem;margin-bottom:1.2rem}
+  .dish-name{font-family:'Cormorant Garamond',serif;font-size:1.25rem}
+  .dish-desc{font-size:.8rem;color:var(--muted);margin-top:.15rem}
+  .dish-dots{flex:1;border-bottom:1px dotted #c5bfae;transform:translateY(-4px)}
+  .dish-price{font-family:'Cormorant Garamond',serif;font-size:1.15rem;color:var(--navy);white-space:nowrap}
+  .menu-note{text-align:center;font-size:.72rem;color:var(--muted);font-style:italic;margin-top:2rem}
 
-  .tool-card {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 28px 24px 24px;
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 16px;
-    text-decoration: none;
-    color: var(--text);
-    overflow: hidden;
-    transition: border-color .2s, transform .2s;
-    cursor: pointer;
-  }
+  /* ---------- HOURS / FOOTER ---------- */
+  .hours-section{background:var(--navy-2);color:#fff;text-align:center}
+  .hours-section .section-title{color:#fff}
+  .hours-wrap{max-width:520px;margin:2.5rem auto 0}
+  .hours-status{display:inline-flex;align-items:center;gap:.6rem;font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;
+      border:1px solid rgba(255,255,255,.2);padding:.6em 1.4em;border-radius:100px;margin-bottom:2.2rem}
+  .dot{width:8px;height:8px;border-radius:50%;background:#5dd39e;box-shadow:0 0 10px #5dd39e}
+  .dot.closed{background:#e07a5f;box-shadow:0 0 10px #e07a5f}
+  .hours-list{list-style:none;text-align:left}
+  .hours-list li{display:flex;justify-content:space-between;padding:.7rem .2rem;border-bottom:1px solid rgba(255,255,255,.09);font-size:.9rem}
+  .hours-list li span:first-child{letter-spacing:.12em;text-transform:uppercase;font-size:.72rem;color:var(--gold-light);align-self:center}
+  .hours-list li.today{color:var(--gold-light)}
+  .hours-list li.today span:first-child::after{content:" · oggi";color:#5dd39e;text-transform:none;letter-spacing:0}
+  .hours-src{margin-top:1.4rem;font-size:.66rem;color:rgba(255,255,255,.45);letter-spacing:.05em}
 
-  .tool-card::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(135deg, rgba(245,158,11,.07), transparent 60%);
-    opacity: 0;
-    transition: opacity .25s;
-  }
+  footer{background:var(--navy);color:#fff;padding:4.5rem 6vw 2.5rem;text-align:center}
+  .footer-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:3rem;max-width:1000px;margin:0 auto 3.5rem;text-align:center}
+  .footer-grid h3{font-size:.7rem;letter-spacing:.4em;text-transform:uppercase;color:var(--gold);margin-bottom:1.1rem;font-family:'Montserrat',sans-serif;font-weight:400}
+  .footer-grid p,.footer-grid a{color:rgba(255,255,255,.8);font-size:.9rem;text-decoration:none;line-height:2}
+  .footer-grid a:hover{color:var(--gold-light)}
+  .footer-logo{font-family:'Cormorant Garamond',serif;font-size:1.8rem;letter-spacing:.4em;margin-bottom:.6rem}
+  .footer-logo span{color:var(--gold)}
+  .copy{font-size:.68rem;color:rgba(255,255,255,.35);letter-spacing:.1em;margin-top:1rem}
 
-  .tool-card:hover {
-    border-color: var(--amber);
-    transform: translateY(-3px);
-  }
-  .tool-card:hover::before { opacity: 1; }
+  /* reveal on scroll */
+  .reveal{opacity:0;transform:translateY(30px);transition:opacity .9s ease,transform .9s ease}
+  .reveal.visible{opacity:1;transform:none}
 
-  .tool-card:active { transform: translateY(0) scale(.98); }
-
-  /* accent line top */
-  .tool-card::after {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 2px;
-    background: var(--amber);
-    transform: scaleX(0);
-    transform-origin: left;
-    transition: transform .25s ease;
-  }
-  .tool-card:hover::after { transform: scaleX(1); }
-
-  .card-num {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 11px;
-    letter-spacing: 3px;
-    color: var(--muted);
-    margin-bottom: 14px;
-  }
-
-  .card-icon {
-    font-size: 32px;
-    margin-bottom: 14px;
-    line-height: 1;
-  }
-
-  .card-title {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: clamp(28px, 5vw, 38px);
-    letter-spacing: 2px;
-    line-height: 1;
-    margin-bottom: 8px;
-    color: var(--text);
-    transition: color .2s;
-  }
-  .tool-card:hover .card-title { color: var(--amber2); }
-
-  .card-desc {
-    font-size: 10px;
-    font-weight: 400;
-    letter-spacing: .5px;
-    color: var(--muted);
-    line-height: 1.6;
-  }
-
-  .card-arrow {
-    position: absolute;
-    bottom: 20px;
-    right: 20px;
-    font-size: 18px;
-    color: var(--border2);
-    transition: color .2s, transform .2s;
-  }
-  .tool-card:hover .card-arrow {
-    color: var(--amber);
-    transform: translate(3px, -3px);
-  }
-
-  /* ── FOOTER ── */
-  .footer {
-    margin-top: 40px;
-    font-size: 10px;
-    letter-spacing: 2px;
-    color: var(--muted);
-    text-transform: uppercase;
-    animation: fadeUp .6s .35s ease both;
-  }
-
-  /* ── ANIMATIONS ── */
-  @keyframes fadeDown {
-    from { opacity: 0; transform: translateY(-16px); }
-    to   { opacity: 1; transform: translateY(0); }
-  }
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(16px); }
-    to   { opacity: 1; transform: translateY(0); }
-  }
-
-  /* ── MOBILE ── */
-  @media (max-width: 480px) {
-    .cards { grid-template-columns: 1fr; max-width: 320px; }
-    .logo { margin-bottom: 4px; }
-    .tagline { margin-bottom: 36px; }
+  @media(max-width:860px){
+    .nav-links{position:fixed;inset:0;background:rgba(11,29,42,.98);flex-direction:column;justify-content:center;gap:2rem;
+        transform:translateX(100%);transition:.4s}
+    .nav-links.open{transform:none}
+    .nav-links a{font-size:.9rem}
+    .hamburger{display:block;z-index:110}
+    .intro{grid-template-columns:1fr;gap:3rem}
+    .grid{grid-template-columns:1fr 1fr;grid-auto-rows:180px}
+    .footer-grid{grid-template-columns:1fr;gap:2rem}
+    .modal-card{padding:3rem 1.6rem}
+    section{padding:4.5rem 6vw}
   }
 </style>
 </head>
 <body>
-<div class="page">
 
-  <div class="logo">KARTING<span>⚡</span>TOOLS</div>
-  <div class="tagline">Seleziona uno strumento</div>
+<nav id="nav">
+  <a class="logo" href="#top">Pru<span>a</span></a>
+  <button class="hamburger" onclick="document.getElementById('links').classList.toggle('open')" aria-label="Menu">☰</button>
+  <ul class="nav-links" id="links">
+    <li><a href="#ristorante" onclick="closeNav()">Il Ristorante</a></li>
+    <li><a href="#galleria" onclick="closeNav()">Galleria</a></li>
+    <li><a href="#" onclick="openMenu(event)">Menù</a></li>
+    <li><a href="#orari" onclick="closeNav()">Orari & Contatti</a></li>
+    <li><a class="btn" href="tel:+390541452269">Prenota</a></li>
+  </ul>
+</nav>
 
-  <div class="cards">
-
-    <a class="tool-card" href="kart.html">
-      <div class="card-num">01 —</div>
-      <div class="card-icon">🏁</div>
-      <div class="card-title">KART</div>
-      <div class="card-desc">Gestione gara,<br>timing e analisi</div>
-      <div class="card-arrow">↗</div>
-    </a>
-
-    <a class="tool-card" href="crm.html">
-      <div class="card-num">02 —</div>
-      <div class="card-icon">⚡</div>
-      <div class="card-title">CRM</div>
-      <div class="card-desc">Clienti, vendite<br>e gare</div>
-      <div class="card-arrow">↗</div>
-    </a>
-
+<header id="top">
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <p class="kicker">Ristorante di pesce · Darsena di Rimini</p>
+    <h1>Prua</h1>
+    <p class="hero-sub">Dove il mare incontra la tavola, ogni giorno.</p>
+    <div class="hero-cta">
+      <a class="cta-solid" href="#" onclick="openMenu(event)">Scopri il Menù</a>
+      <a class="cta-ghost" href="tel:+390541452269">Prenota un tavolo</a>
+    </div>
   </div>
+  <div class="scroll-hint">Scorri</div>
+</header>
 
-  <div class="footer">Karting Tools · v2.0</div>
+<!-- INTRO -->
+<section id="ristorante">
+  <div class="intro">
+    <div class="reveal">
+      <p class="section-label">Il Ristorante</p>
+      <h2 class="section-title">Una terrazza sospesa<br>sul porto di Rimini</h2>
+      <div class="rule"></div>
+      <p class="drop">Affacciato sulla Darsena, a pochi passi dal mercato ittico, Prua è il punto d'incontro tra la tradizione marinara riminese e l'alta cucina di mare. Ogni mattina il pescato del giorno arriva direttamente dalle barche del porto alla nostra cucina.</p>
+      <p>Crudi selezionati, paste fresche fatte a mano e il pesce dell'Adriatico interpretato con eleganza e rispetto della materia prima. Il tutto accompagnato da una carta di vini che celebra le migliori bollicine e i bianchi di Romagna e d'Italia.</p>
+      <p class="serif" style="font-style:italic;color:var(--gold);font-size:1.15rem">« Cortesia, eleganza, ottima qualità del cibo. »<br><span style="font-size:.8rem;color:var(--muted);font-family:'Montserrat',sans-serif;font-style:normal;letter-spacing:.15em">— DAI NOSTRI OSPITI</span></p>
+    </div>
+    <div class="intro-img reveal">
+      <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?q=80&w=1200&auto=format&fit=crop" alt="Sala elegante del Ristorante Prua" loading="lazy">
+    </div>
+  </div>
+</section>
 
+<!-- GALLERY -->
+<section class="gallery" id="galleria">
+  <div class="gallery-head reveal">
+    <p class="section-label">Galleria</p>
+    <h2 class="section-title">Atmosfera, mare e cucina</h2>
+  </div>
+  <div class="grid reveal">
+    <figure><img src="https://images.unsplash.com/photo-1514933651103-005eec06c04b?q=80&w=1400&auto=format&fit=crop" alt="La sala sul porto" loading="lazy"><figcaption>La sala sul porto</figcaption></figure>
+    <figure><img src="https://images.unsplash.com/photo-1467003909585-2f8a72700288?q=80&w=900&auto=format&fit=crop" alt="Pescato del giorno" loading="lazy"><figcaption>Pescato del giorno</figcaption></figure>
+    <figure><img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?q=80&w=900&auto=format&fit=crop" alt="I nostri piatti" loading="lazy"><figcaption>I nostri piatti</figcaption></figure>
+    <figure><img src="https://images.unsplash.com/photo-1552566626-52f8b828add9?q=80&w=900&auto=format&fit=crop" alt="Atmosfera serale" loading="lazy"><figcaption>Atmosfera serale</figcaption></figure>
+    <figure><img src="https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?q=80&w=900&auto=format&fit=crop" alt="La cantina" loading="lazy"><figcaption>La cantina</figcaption></figure>
+  </div>
+</section>
+
+<!-- MENU INVITE -->
+<section>
+  <div class="menu-invite reveal">
+    <p class="section-label">La Cucina</p>
+    <h2 class="section-title">Il menù del mare</h2>
+    <p>Una carta essenziale che cambia con le stagioni e con il mercato del giorno. Crudités, paste fresche e il meglio dell'Adriatico.</p>
+    <button class="open-menu-btn" onclick="openMenu(event)">Apri il Menù</button>
+  </div>
+</section>
+
+<!-- MENU MODAL -->
+<div class="modal" id="menuModal" role="dialog" aria-modal="true" aria-label="Menù del ristorante">
+  <div class="modal-backdrop" onclick="closeMenu()"></div>
+  <div class="modal-card">
+    <button class="modal-close" onclick="closeMenu()" aria-label="Chiudi">×</button>
+    <div class="menu-header">
+      <h2>Menù</h2>
+      <p>secondo il mercato del giorno</p>
+    </div>
+
+    <div class="menu-cat">
+      <h3>— Crudo & Antipasti —</h3>
+      <div class="dish"><div><div class="dish-name">Gran crudo della Prua</div><div class="dish-desc">selezione di crudi dell'Adriatico, ostriche e scampi</div></div><div class="dish-dots"></div><div class="dish-price">€ 32</div></div>
+      <div class="dish"><div><div class="dish-name">Tartare di tonno rosso</div><div class="dish-desc">avocado, sesamo e citronette agli agrumi</div></div><div class="dish-dots"></div><div class="dish-price">€ 22</div></div>
+      <div class="dish"><div><div class="dish-name">Polpo arrosto</div><div class="dish-desc">crema di patate affumicate e olive taggiasche</div></div><div class="dish-dots"></div><div class="dish-price">€ 18</div></div>
+    </div>
+
+    <div class="menu-cat">
+      <h3>— Primi Piatti —</h3>
+      <div class="dish"><div><div class="dish-name">Tortellini rombo e vongole</div><div class="dish-desc">pasta fresca fatta in casa, il nostro piatto simbolo</div></div><div class="dish-dots"></div><div class="dish-price">€ 24</div></div>
+      <div class="dish"><div><div class="dish-name">Spaghettone allo scoglio</div><div class="dish-desc">frutti di mare della Darsena, pomodorino confit</div></div><div class="dish-dots"></div><div class="dish-price">€ 22</div></div>
+      <div class="dish"><div><div class="dish-name">Risotto alla marinara</div><div class="dish-desc">carnaroli, crostacei e bisque di scampi <em>(min. 2 persone)</em></div></div><div class="dish-dots"></div><div class="dish-price">€ 26</div></div>
+    </div>
+
+    <div class="menu-cat">
+      <h3>— Secondi Piatti —</h3>
+      <div class="dish"><div><div class="dish-name">Pescato del giorno al forno</div><div class="dish-desc">dal mercato ittico di Rimini, patate e verdure di stagione</div></div><div class="dish-dots"></div><div class="dish-price">€ 8/hg</div></div>
+      <div class="dish"><div><div class="dish-name">Gran fritto dell'Adriatico</div><div class="dish-desc">paranza, calamari e verdure in tempura leggera</div></div><div class="dish-dots"></div><div class="dish-price">€ 24</div></div>
+      <div class="dish"><div><div class="dish-name">Grigliata di pesce</div><div class="dish-desc">selezione del giorno alla brace</div></div><div class="dish-dots"></div><div class="dish-price">€ 28</div></div>
+    </div>
+
+    <div class="menu-cat">
+      <h3>— Dessert —</h3>
+      <div class="dish"><div><div class="dish-name">Crema catalana agli agrumi di Sicilia</div></div><div class="dish-dots"></div><div class="dish-price">€ 9</div></div>
+      <div class="dish"><div><div class="dish-name">Tiramisù della casa</div></div><div class="dish-dots"></div><div class="dish-price">€ 9</div></div>
+      <div class="dish"><div><div class="dish-name">Sorbetto al limone e prosecco</div></div><div class="dish-dots"></div><div class="dish-price">€ 7</div></div>
+    </div>
+
+    <p class="menu-note">Menù indicativo: la carta varia quotidianamente secondo il pescato del mercato di Rimini.<br>Per allergie e intolleranze, il personale è a disposizione.</p>
+  </div>
 </div>
+
+<!-- HOURS -->
+<section class="hours-section" id="orari">
+  <div class="reveal">
+    <p class="section-label">Orari di apertura</p>
+    <h2 class="section-title">Vi aspettiamo sulla Darsena</h2>
+    <div class="hours-wrap">
+      <div class="hours-status" id="statusBadge" hidden><span class="dot" id="statusDot"></span><span id="statusText"></span></div>
+      <ul class="hours-list" id="hoursList"><!-- popolato via JS --></ul>
+      <p class="hours-src" id="hoursSrc">Orari indicativi — telefonare per conferma</p>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div>
+      <h3>Dove siamo</h3>
+      <p>Viale Ortigara 45/d<br>47921 Rimini (RN)</p>
+      <a href="https://www.google.com/maps/search/?api=1&query=Ristorante+Prua+Viale+Ortigara+45+Rimini" target="_blank" rel="noopener">Apri in Google Maps →</a>
+    </div>
+    <div>
+      <div class="footer-logo">Pru<span>a</span></div>
+      <p style="font-family:'Cormorant Garamond',serif;font-style:italic;color:rgba(255,255,255,.6)">Ristorante di pesce<br>sul porto di Rimini</p>
+    </div>
+    <div>
+      <h3>Prenotazioni</h3>
+      <a href="tel:+390541452269">+39 0541 452269</a><br>
+      <a href="https://www.facebook.com/pruaristorante/" target="_blank" rel="noopener">Facebook</a>
+    </div>
+  </div>
+  <p class="copy">© <span id="year"></span> Ristorante Prua — Rimini · Tutti i diritti riservati</p>
+</footer>
+
+<script>
+/* ============================================================
+   CONFIGURAZIONE SYNC ORARI CON GOOGLE BUSINESS PROFILE
+   ------------------------------------------------------------
+   1. Vai su https://console.cloud.google.com → crea un progetto
+   2. Abilita "Places API (New)"
+   3. Crea una chiave API e LIMITALA per referrer HTTP al tuo
+      dominio (es. *.netlify.app/* e il dominio definitivo)
+   4. Trova il Place ID del ristorante qui:
+      https://developers.google.com/maps/documentation/places/web-service/place-id
+      (cerca "Ristorante Prua Rimini")
+   5. Incolla i due valori qui sotto. Finché restano vuoti,
+      la pagina mostra gli orari statici di FALLBACK_HOURS.
+   Quando la scheda Google viene aggiornata, la pagina si
+   aggiorna da sola a ogni caricamento.
+   ============================================================ */
+const GOOGLE_API_KEY = "";   // ← chiave Places API (New)
+const GOOGLE_PLACE_ID = "";  // ← Place ID della scheda Google
+
+/* Orari di fallback (mostrati se l'API non è configurata o non risponde).
+   Formato: [apertura, chiusura] in minuti da mezzanotte; null = chiuso. */
+const FALLBACK_HOURS = {
+  labels: {1:"Lunedì",2:"Martedì",3:"Mercoledì",4:"Giovedì",5:"Venerdì",6:"Sabato",0:"Domenica"},
+  week: {
+    1:[["12:00","15:00"],["20:00","24:00"]],
+    2:[["12:00","15:00"],["20:00","24:00"]],
+    3:[["12:00","15:00"],["20:00","24:00"]],
+    4:[["12:00","15:00"],["20:00","24:00"]],
+    5:[["12:00","15:00"],["20:00","24:00"]],
+    6:[["12:00","15:00"],["20:00","24:00"]],
+    0:[["12:00","15:00"],["20:00","24:00"]]
+  }
+};
+
+/* ---------- render orari ---------- */
+const dayOrder=[1,2,3,4,5,6,0];
+const todayIdx=new Date().getDay();
+
+function renderFallback(){
+  const ul=document.getElementById('hoursList');
+  ul.innerHTML='';
+  dayOrder.forEach(d=>{
+    const ranges=FALLBACK_HOURS.week[d];
+    const li=document.createElement('li');
+    if(d===todayIdx)li.classList.add('today');
+    const txt=ranges?ranges.map(r=>r.join(" – ")).join("  ·  "):"Chiuso";
+    li.innerHTML=`<span>${FALLBACK_HOURS.labels[d]}</span><span>${txt}</span>`;
+    ul.appendChild(li);
+  });
+  setStatusFromFallback();
+}
+
+function setStatusFromFallback(){
+  const now=new Date();
+  const mins=now.getHours()*60+now.getMinutes();
+  const ranges=FALLBACK_HOURS.week[todayIdx]||[];
+  const open=ranges.some(([a,b])=>{
+    const [ah,am]=a.split(":").map(Number);
+    const [bh,bm]=b.split(":").map(Number);
+    return mins>=ah*60+am && mins<bh*60+bm;
+  });
+  showStatus(open);
+}
+
+function showStatus(open){
+  const badge=document.getElementById('statusBadge');
+  badge.hidden=false;
+  document.getElementById('statusDot').classList.toggle('closed',!open);
+  document.getElementById('statusText').textContent=open?"Aperto ora":"Chiuso ora";
+}
+
+/* ---------- sync con Google Places API (New) ---------- */
+async function syncGoogleHours(){
+  if(!GOOGLE_API_KEY||!GOOGLE_PLACE_ID){renderFallback();return;}
+  try{
+    const url=`https://places.googleapis.com/v1/places/${GOOGLE_PLACE_ID}?languageCode=it&key=${GOOGLE_API_KEY}`;
+    const res=await fetch(url,{headers:{
+      "X-Goog-FieldMask":"regularOpeningHours,currentOpeningHours"
+    }});
+    if(!res.ok)throw new Error("Places API "+res.status);
+    const data=await res.json();
+    const oh=data.currentOpeningHours||data.regularOpeningHours;
+    if(!oh||!oh.weekdayDescriptions)throw new Error("Nessun orario nella scheda");
+
+    // weekdayDescriptions parte da lunedì: es. "lunedì: 12:00–15:00, 20:00–24:00"
+    const ul=document.getElementById('hoursList');
+    ul.innerHTML='';
+    const googleTodayIdx=(todayIdx+6)%7; // JS: 0=dom → Google: 0=lun
+    oh.weekdayDescriptions.forEach((line,i)=>{
+      const sep=line.indexOf(':');
+      const day=line.slice(0,sep).trim();
+      const hrs=line.slice(sep+1).trim();
+      const li=document.createElement('li');
+      if(i===googleTodayIdx)li.classList.add('today');
+      li.innerHTML=`<span>${day.charAt(0).toUpperCase()+day.slice(1)}</span><span>${hrs}</span>`;
+      ul.appendChild(li);
+    });
+    if(typeof oh.openNow==="boolean")showStatus(oh.openNow);
+    document.getElementById('hoursSrc').textContent="Orari sincronizzati con la scheda Google del ristorante";
+  }catch(e){
+    console.warn("Sync Google non riuscito, uso orari di fallback:",e.message);
+    renderFallback();
+  }
+}
+syncGoogleHours();
+
+/* ---------- UI ---------- */
+document.getElementById('year').textContent=new Date().getFullYear();
+
+const nav=document.getElementById('nav');
+addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>60),{passive:true});
+
+function closeNav(){document.getElementById('links').classList.remove('open');}
+function openMenu(e){if(e)e.preventDefault();closeNav();document.getElementById('menuModal').classList.add('open');document.body.style.overflow='hidden';}
+function closeMenu(){document.getElementById('menuModal').classList.remove('open');document.body.style.overflow='';}
+addEventListener('keydown',e=>{if(e.key==='Escape')closeMenu();});
+
+/* reveal on scroll */
+const io=new IntersectionObserver(entries=>{
+  entries.forEach(en=>{if(en.isIntersecting){en.target.classList.add('visible');io.unobserve(en.target);}});
+},{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
 </body>
 </html>
