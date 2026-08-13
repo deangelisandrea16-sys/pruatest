@@ -100,19 +100,27 @@
       font-size:.74rem;letter-spacing:.28em;text-transform:uppercase;padding:1.1em 3em;cursor:pointer;transition:.3s}
   .open-menu-btn:hover{background:transparent;color:var(--navy);border-color:var(--gold)}
 
-  /* ---------- MENU MODAL (pagine reali) ---------- */
+  /* ---------- MENU MODAL ---------- */
   .modal{position:fixed;inset:0;z-index:200;display:none;align-items:center;justify-content:center;padding:3vh 3vw}
   .modal.open{display:flex}
   .modal-backdrop{position:absolute;inset:0;background:rgba(11,29,42,.85);backdrop-filter:blur(6px)}
-  .modal-card{position:relative;background:var(--navy);max-width:640px;width:100%;max-height:94vh;overflow-y:auto;
-      box-shadow:0 30px 80px rgba(0,0,0,.55);animation:fadeUp .5s ease both;scrollbar-width:thin;scrollbar-color:var(--gold) transparent}
+  .modal-card{position:relative;background:var(--cream);max-width:760px;width:100%;max-height:92vh;overflow-y:auto;
+      padding:3.6rem 3.2rem;box-shadow:0 30px 80px rgba(0,0,0,.5);animation:fadeUp .5s ease both;scrollbar-width:thin;scrollbar-color:var(--gold) transparent}
   .modal-card::-webkit-scrollbar{width:6px}
   .modal-card::-webkit-scrollbar-thumb{background:var(--gold);border-radius:3px}
-  .modal-close{position:sticky;top:.6rem;float:right;margin-right:.6rem;z-index:5;background:rgba(11,29,42,.75);border:1px solid rgba(255,255,255,.25);
-      border-radius:50%;width:2.4rem;height:2.4rem;font-size:1.4rem;color:#fff;cursor:pointer;transition:.3s;line-height:1}
-  .modal-close:hover{background:var(--gold);color:var(--navy);border-color:var(--gold)}
-  .menu-pages img{height:auto}
-  .menu-hint{text-align:center;color:rgba(255,255,255,.55);font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;padding:.9rem 0 1.2rem}
+  .modal-close{position:sticky;top:0;float:right;margin:-2.4rem -1.8rem 0 0;background:none;border:none;font-size:1.8rem;color:var(--muted);cursor:pointer;transition:.3s;line-height:1;z-index:5}
+  .modal-close:hover{color:var(--navy)}
+  .menu-header{text-align:center;margin-bottom:2.8rem}
+  .menu-header h2{font-size:2.6rem;letter-spacing:.12em}
+  .menu-header p{font-family:'Cormorant Garamond',serif;font-style:italic;color:var(--muted)}
+  .menu-cat{margin-bottom:2.4rem}
+  .menu-cat h3{letter-spacing:.35em;text-transform:uppercase;color:var(--gold);text-align:center;margin-bottom:1.5rem;font-family:'Montserrat',sans-serif;font-weight:400;font-size:.78rem}
+  .dish{display:flex;justify-content:space-between;align-items:baseline;gap:1rem;margin-bottom:1.05rem}
+  .dish-name{font-family:'Cormorant Garamond',serif;font-size:1.22rem}
+  .dish-note{font-size:.74rem;color:var(--muted)}
+  .dish-dots{flex:1;border-bottom:1px dotted #c5bfae;transform:translateY(-4px)}
+  .dish-price{font-family:'Cormorant Garamond',serif;font-size:1.12rem;color:var(--navy);white-space:nowrap}
+  .menu-note{text-align:center;font-size:.7rem;color:var(--muted);font-style:italic;margin-top:2rem;line-height:1.8}
 
   /* ---------- HOURS / FOOTER ---------- */
   .hours-section{background:var(--navy-2);color:#fff;text-align:center}
@@ -257,20 +265,93 @@
   </div>
 </section>
 
-<!-- MENU MODAL: pagine reali del menù -->
+<!-- MENU MODAL -->
 <div class="modal" id="menuModal" role="dialog" aria-modal="true" aria-label="Menù del ristorante">
   <div class="modal-backdrop" onclick="closeMenu()"></div>
   <div class="modal-card">
     <button class="modal-close" onclick="closeMenu()" aria-label="Chiudi">×</button>
-    <div class="menu-pages">
-      <img src="foto/menu-1.png" alt="Menù Ristorante Prua — pagina 1" loading="lazy">
-      <img src="foto/menu-2.png" alt="Menù Ristorante Prua — pagina 2" loading="lazy">
-      <img src="foto/menu-3.png" alt="Menù Ristorante Prua — pagina 3" loading="lazy">
-      <img src="foto/menu-4.png" alt="Menù Ristorante Prua — pagina 4" loading="lazy">
-      <img src="foto/menu-5.png" alt="Menù Ristorante Prua — pagina 5" loading="lazy">
-      <img src="foto/menu-6.png" alt="Menù Ristorante Prua — pagina 6" loading="lazy">
+    <div class="menu-header">
+      <h2>Menù</h2>
+      <p>ristorante Prua · cucina di mare</p>
     </div>
-    <p class="menu-hint">Scorri per sfogliare il menù</p>
+
+    <div class="menu-cat">
+      <h3>— Dall'acquario —</h3>
+      <div class="dish"><div class="dish-name">Astice Jumbo <span class="dish-note">(al kg)</span></div><div class="dish-dots"></div><div class="dish-price">€ 80,00</div></div>
+      <div class="dish"><div class="dish-name">Astice blu <span class="dish-note">(al kg)</span></div><div class="dish-dots"></div><div class="dish-price">€ 120,00</div></div>
+      <div class="dish"><div class="dish-name">Aragosta Reale <span class="dish-note">(al kg)</span></div><div class="dish-dots"></div><div class="dish-price">€ 180,00</div></div>
+      <div class="dish"><div class="dish-name">Granchio Reale — King Crab <span class="dish-note">(al kg)</span></div><div class="dish-dots"></div><div class="dish-price">€ 200,00 / 240,00</div></div>
+    </div>
+
+    <div class="menu-cat">
+      <h3>— Antipasti —</h3>
+      <div class="dish"><div class="dish-name">Crudità</div><div class="dish-dots"></div><div class="dish-price">€ 33,00</div></div>
+      <div class="dish"><div class="dish-name">Tris di carpacci</div><div class="dish-dots"></div><div class="dish-price">€ 18,00</div></div>
+      <div class="dish"><div class="dish-name">Tartare di tonno pinna gialla allo zenzero</div><div class="dish-dots"></div><div class="dish-price">€ 18,00</div></div>
+      <div class="dish"><div class="dish-name">Ostriche Fine de Clair</div><div class="dish-dots"></div><div class="dish-price">cad. € 3,50</div></div>
+      <div class="dish"><div class="dish-name">Ostriche Krystale</div><div class="dish-dots"></div><div class="dish-price">cad. € 5,00</div></div>
+      <div class="dish"><div class="dish-name">Antipasto misto freddo <span class="dish-note">(6 tipi)</span></div><div class="dish-dots"></div><div class="dish-price">€ 18,00</div></div>
+      <div class="dish"><div class="dish-name">Tortino di polipo con purea di legumi</div><div class="dish-dots"></div><div class="dish-price">€ 18,00</div></div>
+      <div class="dish"><div class="dish-name">La nostra parmigiana di branzino</div><div class="dish-dots"></div><div class="dish-price">€ 15,00</div></div>
+      <div class="dish"><div class="dish-name">Sardoni spinati e fritti con cipolla rossa croccante</div><div class="dish-dots"></div><div class="dish-price">€ 16,00</div></div>
+      <div class="dish"><div class="dish-name">Vongole alla marinara <span class="dish-note">(le poveracce)</span></div><div class="dish-dots"></div><div class="dish-price">€ 16,00</div></div>
+      <div class="dish"><div class="dish-name">Canocchie olio e limone</div><div class="dish-dots"></div><div class="dish-price">€ 18,00</div></div>
+    </div>
+
+    <div class="menu-cat">
+      <h3>— Primi Piatti —</h3>
+      <div class="dish"><div class="dish-name">Paccheri di Stigliano saltati all'astice <span class="dish-note">(min. 2 persone)</span></div><div class="dish-dots"></div><div class="dish-price">cad. € 25,00</div></div>
+      <div class="dish"><div class="dish-name">Tagliolini grezzi allo scoglio</div><div class="dish-dots"></div><div class="dish-price">€ 18,00</div></div>
+      <div class="dish"><div class="dish-name">Tortellini verdi al rombo con vongole sgusciate</div><div class="dish-dots"></div><div class="dish-price">€ 18,00</div></div>
+      <div class="dish"><div class="dish-name">Passatelli asciutti con filetti di sogliole e timo</div><div class="dish-dots"></div><div class="dish-price">€ 18,00</div></div>
+      <div class="dish"><div class="dish-name">Gnocchetti di patate mazzancolle e verdure di stagione</div><div class="dish-dots"></div><div class="dish-price">€ 16,00</div></div>
+      <div class="dish"><div class="dish-name">Risotto tradizionale alla marinara rosso <span class="dish-note">(min. 2 persone)</span></div><div class="dish-dots"></div><div class="dish-price">cad. € 18,00</div></div>
+      <div class="dish"><div class="dish-name">Ravioli al branzino con porro croccante</div><div class="dish-dots"></div><div class="dish-price">€ 18,00</div></div>
+      <div class="dish"><div class="dish-name">Spaghettone di Stigliano alle vongole</div><div class="dish-dots"></div><div class="dish-price">€ 16,00</div></div>
+    </div>
+
+    <div class="menu-cat">
+      <h3>— Secondi Piatti —</h3>
+      <div class="dish"><div class="dish-name">Gran Catalana di crostacei al vapore</div><div class="dish-dots"></div><div class="dish-price">€ 45,00</div></div>
+      <div class="dish"><div class="dish-name">Grigliata mista dell'Adriatico</div><div class="dish-dots"></div><div class="dish-price">€ 26,00</div></div>
+      <div class="dish"><div class="dish-name">Tagliata di tonno pinna gialla</div><div class="dish-dots"></div><div class="dish-price">€ 20,00</div></div>
+      <div class="dish"><div class="dish-name">Sogliole nostrane alla griglia</div><div class="dish-dots"></div><div class="dish-price">€ 18,00</div></div>
+      <div class="dish"><div class="dish-name">Mazzancolle al sale di Cervia</div><div class="dish-dots"></div><div class="dish-price">€ 25,00</div></div>
+      <div class="dish"><div class="dish-name">Fritto misto dell'Adriatico con verdure croccanti</div><div class="dish-dots"></div><div class="dish-price">€ 20,00</div></div>
+      <div class="dish"><div class="dish-name">Spiedini tradizionali di gamberi e calamari</div><div class="dish-dots"></div><div class="dish-price">€ 16,00</div></div>
+      <div class="dish"><div class="dish-name">Pesce al forno con verdure <span class="dish-note">(all'etto)</span></div><div class="dish-dots"></div><div class="dish-price">€ 6,00 / 8,00</div></div>
+      <div class="dish"><div class="dish-name">Pesce al sale <span class="dish-note">(all'etto)</span></div><div class="dish-dots"></div><div class="dish-price">€ 6,00</div></div>
+    </div>
+
+    <div class="menu-cat">
+      <h3>— Contorni —</h3>
+      <div class="dish"><div class="dish-name">Pinzimonio di verdure fresche</div><div class="dish-dots"></div><div class="dish-price">€ 7,00</div></div>
+      <div class="dish"><div class="dish-name">Verdure grigliate <span class="dish-note">(zucchine e melanzane)</span></div><div class="dish-dots"></div><div class="dish-price">€ 6,00</div></div>
+      <div class="dish"><div class="dish-name">Insalata mista</div><div class="dish-dots"></div><div class="dish-price">€ 6,00</div></div>
+      <div class="dish"><div class="dish-name">Patate fritte</div><div class="dish-dots"></div><div class="dish-price">€ 5,00</div></div>
+    </div>
+
+    <div class="menu-cat">
+      <h3>— Bar —</h3>
+      <div class="dish"><div class="dish-name">Caffè</div><div class="dish-dots"></div><div class="dish-price">€ 2,00</div></div>
+      <div class="dish"><div class="dish-name">Acqua</div><div class="dish-dots"></div><div class="dish-price">€ 3,00</div></div>
+      <div class="dish"><div class="dish-name">Bibite in lattina</div><div class="dish-dots"></div><div class="dish-price">€ 4,00</div></div>
+      <div class="dish"><div class="dish-name">Vino della casa <span class="dish-note">(1/4 lt.)</span></div><div class="dish-dots"></div><div class="dish-price">€ 6,00</div></div>
+      <div class="dish"><div class="dish-name">Vino della casa <span class="dish-note">(1/2 lt.)</span></div><div class="dish-dots"></div><div class="dish-price">€ 12,00</div></div>
+    </div>
+
+    <div class="menu-cat">
+      <h3>— Birra artigianale Amarcord —</h3>
+      <div class="dish"><div class="dish-name">« Gradisca » Lager chiara 5,2° <span class="dish-note">(0,50 lt.)</span></div><div class="dish-dots"></div><div class="dish-price">€ 7,00</div></div>
+      <div class="dish"><div class="dish-name">« Volpina » Rossa 6,5° <span class="dish-note">(0,50 lt.)</span></div><div class="dish-dots"></div><div class="dish-price">€ 7,00</div></div>
+      <div class="dish"><div class="dish-name">« Midòna » Doppio Malto 6,5° <span class="dish-note">(0,50 lt.)</span></div><div class="dish-dots"></div><div class="dish-price">€ 7,00</div></div>
+    </div>
+
+    <div class="menu-cat">
+      <div class="dish"><div class="dish-name">Coperto</div><div class="dish-dots"></div><div class="dish-price">€ 4,00</div></div>
+    </div>
+
+    <p class="menu-note">Si prega la clientela di segnalare eventuali intolleranze o allergie alimentari: il personale in servizio è a disposizione con l'apposita documentazione sugli ingredienti allergeni presenti nel nostro menù.<br>N.B. Alcune materie prime possono essere congelate dalla casa.</p>
   </div>
 </div>
 
