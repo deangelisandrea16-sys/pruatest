@@ -27,7 +27,7 @@
   /* ---------- NAV ---------- */
   nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content:space-between;align-items:center;
       padding:1.4rem 5vw;transition:.4s;color:#fff}
-  nav.scrolled{background:rgba(11,29,42,.96);backdrop-filter:blur(8px);padding:.9rem 5vw;box-shadow:0 2px 24px rgba(0,0,0,.25)}
+  nav.scrolled{background:rgba(11,29,42,.98);padding:.9rem 5vw;box-shadow:0 2px 24px rgba(0,0,0,.25)}
   .logo{display:block;text-decoration:none}
   .logo img{height:54px;width:auto;display:block;transition:.3s}
   nav.scrolled .logo img{height:44px}
@@ -53,7 +53,7 @@
   .hero-cta a{text-decoration:none;font-size:.72rem;letter-spacing:.25em;text-transform:uppercase;padding:.9em 2.4em}
   .cta-solid{background:var(--gold);color:var(--navy);border:1px solid var(--gold);transition:.3s}
   .cta-solid:hover{background:transparent;color:var(--gold-light)}
-  .cta-ghost{border:1px solid rgba(255,255,255,.6);color:#fff;transition:.3s;background:rgba(11,29,42,.35);backdrop-filter:blur(3px)}
+  .cta-ghost{border:1px solid rgba(255,255,255,.6);color:#fff;transition:.3s;background:rgba(11,29,42,.35)}
   .cta-ghost:hover{border-color:var(--gold);color:var(--gold-light)}
   .scroll-hint{position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);color:rgba(255,255,255,.6);font-size:.65rem;letter-spacing:.3em;text-transform:uppercase;z-index:2;animation:bob 2.4s infinite ease-in-out}
   @keyframes bob{0%,100%{transform:translate(-50%,0)}50%{transform:translate(-50%,8px)}}
@@ -81,7 +81,7 @@
   .sala-img img{transition:transform .8s ease}
   .sala-card:hover .sala-img img{transform:scale(1.05)}
   .sala-tag{position:absolute;top:2rem;left:2rem;z-index:2;background:rgba(11,29,42,.78);color:var(--gold-light);
-      font-size:.64rem;letter-spacing:.35em;text-transform:uppercase;padding:.6em 1.3em;backdrop-filter:blur(4px)}
+      font-size:.64rem;letter-spacing:.35em;text-transform:uppercase;padding:.6em 1.3em}
   .sala-card h3{font-size:1.7rem;margin:1.6rem 0 .5rem;letter-spacing:.04em}
   .sala-card p{color:#3d4b57;font-size:.92rem}
   @media(max-width:860px){.sale{grid-template-columns:1fr;gap:3rem}}
@@ -101,7 +101,7 @@
   .gallery-more:hover{background:var(--gold);color:var(--navy)}
 
   /* lightbox */
-  .lightbox{position:fixed;inset:0;z-index:300;display:none;align-items:center;justify-content:center;background:rgba(11,29,42,.93);backdrop-filter:blur(8px)}
+  .lightbox{position:fixed;inset:0;z-index:300;display:none;align-items:center;justify-content:center;background:rgba(11,29,42,.95)}
   .lightbox.open{display:flex}
   .lightbox img{max-width:88vw;max-height:88vh;width:auto;height:auto;box-shadow:0 30px 90px rgba(0,0,0,.6)}
   .lb-btn{position:absolute;top:50%;transform:translateY(-50%);background:none;border:none;color:rgba(255,255,255,.7);font-size:3rem;cursor:pointer;padding:1rem;line-height:1;transition:.3s;font-family:'Cormorant Garamond',serif}
@@ -139,7 +139,7 @@
   /* ---------- MENU MODAL ---------- */
   .modal{position:fixed;inset:0;z-index:200;display:none;align-items:center;justify-content:center;padding:3vh 3vw}
   .modal.open{display:flex}
-  .modal-backdrop{position:absolute;inset:0;background:rgba(11,29,42,.85);backdrop-filter:blur(6px)}
+  .modal-backdrop{position:absolute;inset:0;background:rgba(11,29,42,.88)}
   .modal-card{position:relative;background:var(--cream);max-width:760px;width:100%;max-height:92vh;overflow-y:auto;
       padding:3.6rem 3.2rem;box-shadow:0 30px 80px rgba(0,0,0,.5);animation:fadeUp .5s ease both;scrollbar-width:thin;scrollbar-color:var(--gold) transparent}
   .modal-card::-webkit-scrollbar{width:6px}
@@ -198,7 +198,7 @@
 
   @media(max-width:1000px){.masonry{columns:2}}
   @media(max-width:860px){
-    .nav-links{position:fixed;inset:0;background:rgba(11,29,42,.98);flex-direction:column;justify-content:center;gap:2rem;
+    .nav-links{position:fixed;inset:0;background:#0b1d2a;flex-direction:column;justify-content:center;gap:2rem;
         transform:translateX(100%);transition:.4s}
     .nav-links.open{transform:none}
     .nav-links a{font-size:.9rem}
