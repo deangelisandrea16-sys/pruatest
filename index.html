@@ -110,6 +110,23 @@
   .lb-close{position:absolute;top:1.2rem;right:2rem;background:none;border:none;color:rgba(255,255,255,.7);font-size:2.2rem;cursor:pointer;transition:.3s}
   .lb-close:hover{color:#fff}
 
+  /* cena aziendale */
+  .aziendale{background:var(--navy-2);color:#fff}
+  .aziendale-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:4.5rem;align-items:center;max-width:1200px;margin:0 auto}
+  .aziendale .section-title{color:#fff}
+  .aziendale-sub{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.25rem;color:rgba(255,255,255,.85);margin-bottom:2.4rem}
+  .wa-cta{display:inline-flex;align-items:center;gap:.8rem;background:#25D366;color:#fff;text-decoration:none;
+      font-size:.74rem;letter-spacing:.22em;text-transform:uppercase;padding:1.1em 2.4em;transition:.3s;border:1px solid #25D366}
+  .wa-cta:hover{background:transparent;color:#25D366}
+  .wa-cta svg{width:20px;height:20px;fill:currentColor;flex-shrink:0}
+  .aziendale-imgs{position:relative;aspect-ratio:4/5}
+  .aziendale-imgs .az-1{position:absolute;top:0;right:0;width:82%;height:68%;object-fit:cover;box-shadow:0 18px 50px rgba(0,0,0,.4)}
+  .aziendale-imgs .az-2{position:absolute;bottom:0;left:0;width:62%;height:46%;object-fit:cover;border:6px solid var(--navy-2);box-shadow:0 18px 50px rgba(0,0,0,.45)}
+  @media(max-width:860px){
+    .aziendale-grid{grid-template-columns:1fr;gap:3rem}
+    .aziendale-imgs{aspect-ratio:4/3;max-width:480px}
+  }
+
   /* menu section */
   .menu-invite{text-align:center;max-width:720px;margin:0 auto}
   .menu-invite p{color:#3d4b57;margin-bottom:2.4rem}
@@ -306,6 +323,26 @@
   <button class="lb-btn lb-next" onclick="lbNav(1,event)">›</button>
   <button class="lb-close" onclick="closeLb()" aria-label="Chiudi">×</button>
 </div>
+
+<!-- CENA AZIENDALE -->
+<section class="aziendale" id="aziendale">
+  <div class="aziendale-grid">
+    <div class="reveal">
+      <p class="section-label">Eventi & Gruppi</p>
+      <h2 class="section-title">Vuoi organizzare<br>la tua cena aziendale?</h2>
+      <div class="rule"></div>
+      <p class="aziendale-sub">Hai la possibilità di scegliere e personalizzare il menù in base alle tue esigenze.</p>
+      <a class="wa-cta" href="https://wa.me/393314825664?text=Buongiorno%2C%20vorrei%20organizzare%20una%20cena%20aziendale%20al%20Ristorante%20Prua%20e%20ricevere%20informazioni%20sui%20men%C3%B9%20personalizzabili" target="_blank" rel="noopener">
+        <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><path d="M16.04 3C9.2 3 3.66 8.54 3.66 15.37c0 2.18.57 4.3 1.65 6.17L3.5 28.5l7.13-1.87a12.34 12.34 0 0 0 5.41 1.25h.01c6.83 0 12.37-5.54 12.37-12.37S22.87 3 16.04 3zm0 22.6h-.01a10.2 10.2 0 0 1-5.21-1.43l-.37-.22-3.88 1.02 1.04-3.78-.24-.39a10.23 10.23 0 0 1-1.57-5.43c0-5.66 4.6-10.26 10.26-10.26 2.74 0 5.31 1.07 7.25 3s3 4.52 3 7.26c-.01 5.66-4.61 10.23-10.27 10.23zm5.63-7.66c-.31-.16-1.83-.9-2.11-1-.28-.11-.49-.16-.7.15-.2.31-.79 1-.97 1.21-.18.2-.36.23-.67.08-.31-.16-1.3-.48-2.48-1.53-.92-.82-1.54-1.83-1.72-2.14-.18-.31-.02-.48.14-.63.14-.14.31-.36.46-.54.16-.18.2-.31.31-.52.1-.2.05-.39-.03-.54-.08-.16-.7-1.69-.96-2.31-.25-.61-.51-.53-.7-.54h-.6c-.2 0-.54.08-.82.39-.28.31-1.08 1.06-1.08 2.57s1.1 2.98 1.26 3.19c.16.2 2.17 3.32 5.26 4.65.74.32 1.31.51 1.76.65.74.24 1.41.2 1.94.12.59-.09 1.83-.75 2.09-1.47.26-.72.26-1.34.18-1.47-.08-.13-.28-.2-.59-.36z"/></svg>
+        Scrivici su WhatsApp
+      </a>
+    </div>
+    <div class="aziendale-imgs reveal">
+      <img class="az-1" src="foto/sala-interna.jpg" alt="La sala interna allestita per eventi" loading="lazy">
+      <img class="az-2" src="foto/galleria-18.jpg" alt="I piatti del Ristorante Prua" loading="lazy">
+    </div>
+  </div>
+</section>
 
 <!-- MENU INVITE -->
 <section>
